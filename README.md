@@ -8,7 +8,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/xiemj/sam-auto-annotator.svg)](https://github.com/xiemj/sam-auto-annotator/network)
 [![GitHub issues](https://img.shields.io/github/issues/xiemj/sam-auto-annotator.svg)](https://github.com/xiemj/sam-auto-annotator/issues)
 
-> **🚀 革命性的计算机视觉数据集生成工具**  
+> **🚀 流水线计算机视觉数据集生成工具**  
 > 基于Meta SAM模型的全自动标注流水线，让数据集制作从几周缩短到几小时！
 
 ## 💡 为什么选择 SAM Auto Annotator？
@@ -62,7 +62,6 @@
 | **扩展性** | 差 | 中等 | **强（模块化设计）** |
 | **成本** | 高 | 中等 | **低（开源免费）** |
 
-// ... existing code ...
 ## 🌟 功能特性
 
 - **Step1**: SAM自动分割和抠图
@@ -70,6 +69,53 @@
 - **Step3**: 背景合成和数据增强
 - **Step4**: COCO格式数据集转换
 
+## 📦 安装
+
+### 环境要求
+
+- Python 3.8+
+- CUDA 11.0+ (可选，用于GPU加速)
+
+### 🎯 快速体验（推荐）
+
+**不想下载整个项目？** 只需要核心功能？你可以直接使用我们的核心代码！
+
+```bash
+# 只需要复制这4个核心文件到你的项目中
+# /mnt/afs/xiemingjin/sam_auto_annotator/src/sam_auto_annotator/core/
+# ├── step1_cutout.py      # SAM自动分割和抠图
+# ├── step2_resize.py      # 基于物理尺寸的图像缩放
+# ├── step3_synthesize.py  # 背景合成和数据增强  
+# └── step4_coco_convert.py # COCO格式数据集转换
+
+# 然后安装必要依赖
+pip install torch torchvision segment-anything opencv-python pillow pyyaml
+```
+
+**极简使用示例：**
+```python
+# 直接导入核心函数使用
+from step1_cutout import run_step1_cutout
+from step2_resize import run_step2_resize  
+from step3_synthesize import run_step3_synthesize
+from step4_coco_convert import run_step4_coco_convert
+
+# 执行完整流水线
+result1 = run_step1_cutout(input_images="./images", output_dir="./step1_output")
+result2 = run_step2_resize(cutout_root="./step1_output", output_root="./step2_output")
+result3 = run_step3_synthesize(cutout_root="./step2_output", background_root="./backgrounds", synth_root="./step3_output")
+result4 = run_step4_coco_convert(ndjson_path="./step3_output/annotations.ndjson", output_path="./final_dataset.json")
+```
+
+> 💡 **提示**：这种方式适合想要快速集成到现有项目中的开发者，只需要4个核心文件就能完成整个标注流水线！
+
+### 完整安装（推荐用于生产环境）
+
+```bash
+git clone https://github.com/xemj9/sam-auto-annotator.git
+cd sam-auto-annotator
+pip install -e .
+```
 ## 📦 安装
 
 ### 环境要求
