@@ -1,0 +1,62 @@
+# 物理尺寸配置文件 (单位: mm)
+
+physical_sizes:
+  # 硬币类 - 两种尺寸
+  Coin_H:
+    type: circle
+    sizes: [32, 64]
+    auto_detect: true
+    
+  Coin_T:
+    type: circle  
+    sizes: [32, 64]
+    auto_detect: true
+    
+  # 标记类 - 圆形
+  Markers_Damage010:
+    type: circle
+    diameter: 15.8
+    
+  Markers_Damage050:
+    type: circle
+    diameter: 18
+    
+  Markers_Damage100:
+    type: circle
+    diameter: 22.6
+    
+  Markers_Poisoned:
+    type: circle
+    diameter: 27.2
+    
+  Markers_Burned:
+    type: circle
+    diameter: 27.2
+    
+  # 标记类 - 长方形
+  Markers_GX_Avaiable:
+    type: rectangle
+    width: 41
+    height: 64.5
+    
+  Markers_GX_Used:
+    type: rectangle
+    width: 41
+    height: 64.5
+
+# 硬币尺寸自动检测阈值 (像素)
+coin_size_thresholds:
+  small_max: 75
+  large_min: 110
+
+# 类别特定放大倍数
+boost_multipliers:
+  Markers_Damage010: 1.18
+  Markers_Damage050: 1.12
+  Markers_Damage100: 1.1
+  Coin_H: 1.05
+  Coin_T: 1.05
+  Markers_Poisoned: 1.06
+  Markers_Burned: 1.06
+  Markers_GX_Avaiable: 1.05
+  Markers_GX_Used: 1.05

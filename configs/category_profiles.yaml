@@ -1,0 +1,87 @@
+# 类别检测配置文件
+
+# 类别ID映射
+category_mapping:
+  Coin_H: 1
+  Coin_T: 2
+  Markers_Damage010: 3
+  Markers_Damage050: 4
+  Markers_Damage100: 5
+  Markers_Poisoned: 6
+  Markers_Burned: 7
+  Markers_GX_Avaiable: 8
+  Markers_GX_Used: 9
+
+# SAM检测配置文件
+category_profiles:
+  large_objects_profile:
+    sam_params:
+      points_per_side: 20
+      pred_iou_thresh: 0.5
+      stability_score_thresh: 0.5
+    filter_params:
+      min_area: 2800
+      max_area: 13500
+      max_aspect_ratio: 1.1
+      
+  small_objects_profile:
+    sam_params:
+      points_per_side: 60
+      pred_iou_thresh: 0.6
+      stability_score_thresh: 0.6
+    filter_params:
+      min_area: 400
+      max_area: 800
+      max_aspect_ratio: 1.15
+
+  large_mid_objects_profile:
+    sam_params:
+      points_per_side: 8
+      pred_iou_thresh: 0.6
+      stability_score_thresh: 0.6
+    filter_params:
+      min_area: 5000
+      max_area: 18000
+      max_aspect_ratio: 2
+
+  middle_objects_profile:
+    sam_params:
+      points_per_side: 30
+      pred_iou_thresh: 0.6
+      stability_score_thresh: 0.5
+    filter_params:
+      min_area: 1900
+      max_area: 2800
+      max_aspect_ratio: 1.1
+
+  small_large_objects_profile:
+    sam_params:
+      points_per_side: 50
+      pred_iou_thresh: 0.6
+      stability_score_thresh: 0.6
+    filter_params:
+      min_area: 1300
+      max_area: 1850
+      max_aspect_ratio: 1.1
+
+  small_mid_objects_profile:
+    sam_params:
+      points_per_side: 60
+      pred_iou_thresh: 0.6
+      stability_score_thresh: 0.5
+    filter_params:
+      min_area: 700
+      max_area: 1100
+      max_aspect_ratio: 1.1
+
+# 类别到配置文件的映射
+category_to_profile_mapping:
+  Coin_H: large_objects_profile
+  Coin_T: large_objects_profile
+  Markers_Damage010: small_objects_profile
+  Markers_Damage050: small_mid_objects_profile
+  Markers_Damage100: small_large_objects_profile
+  Markers_Poisoned: middle_objects_profile
+  Markers_Burned: middle_objects_profile
+  Markers_GX_Avaiable: large_mid_objects_profile
+  Markers_GX_Used: large_mid_objects_profile

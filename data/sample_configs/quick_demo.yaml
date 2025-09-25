@@ -1,0 +1,29 @@
+# 快速演示配置 - 适合初学者
+step1:
+  sam_checkpoint: "sam_vit_h_4b8939.pth"
+  model_type: "vit_h"
+  device: "cuda"
+  category_profiles_file: "category_profiles.yaml"
+  enable_content_filter: false  # 简化处理
+  nms_iou_threshold: 0.5
+  
+step2:
+  pixel_density: 1.0  # 不缩放
+  enable_boost: false
+  
+step3:
+  target_width: 1088   # 较小尺寸，处理更快
+  target_height: 1088
+  left_trim: 50
+  right_trim: 50
+  top_trim: 50
+  bottom_trim: 50
+  bg_repeat: 1
+  
+step4:
+  make_filepaths_absolute: true
+  min_area: 1.0
+
+global:
+  seed: 42
+  verbose: true

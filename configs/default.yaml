@@ -1,0 +1,53 @@
+# SAM Auto Annotator 默认配置
+
+# Step1: SAM分割抠图配置
+step1:
+  sam_checkpoint: "/path/to/sam_checkpoint.pth"
+  model_type: "vit_h"
+  device: "cuda"
+  
+  # 类别配置文件路径
+  category_profiles_file: "category_profiles.yaml"
+  
+  # 输出配置
+  cutout_dir_name: "cutouts"
+  metadata_ndjson_name: "cutouts_metadata.ndjson"
+  
+  # 处理参数
+  enable_content_filter: true
+  content_filter_std_dev_threshold: 13.0
+  nms_iou_threshold: 0.30
+  nested_containment_threshold: 0.80
+  enable_padded_sam: true
+  pad_px: 52
+
+# Step2: 物理尺寸调整配置  
+step2:
+  pixel_density: 1.554  # 目标像素密度 px/mm
+  enable_boost: false   # 是否启用类别特定放大
+  boost_multipliers_file: "boost_multipliers.yaml"
+  
+# Step3: 背景合成配置
+step3:
+  target_width: 1088
+  target_height: 1088
+  left_trim: 296
+  right_trim: 296
+  top_trim: 50
+  bottom_trim: 50
+  mixed_classes: false  # 是否混合类别
+  bg_repeat: 1         # 背景重复次数
+  density_config_file: "density_config.yaml"
+
+# Step4: COCO转换配置
+step4:
+  make_filepaths_absolute: true
+  junge_style: true
+  min_area: 1.0
+  start_image_id: 1
+  start_anno_id: 1
+
+# 全局配置
+global:
+  seed: 42
+  verbose: false
