@@ -1,10 +1,12 @@
 # SAM Auto Annotator
 
 [![CI](https://github.com/xiemj/sam-auto-annotator/workflows/CI/badge.svg)](https://github.com/xiemj/sam-auto-annotator/actions)
-[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![GitHub Release](https://img.shields.io/github/v/release/xiemj/sam-auto-annotator)](https://github.com/xiemj/sam-auto-annotator/releases)
-[![GitHub Stars](https://img.shields.io/github/stars/xiemj/sam-auto-annotator?style=social)](https://github.com/xiemj/sam-auto-annotator/stargazers)
+[![GitHub release](https://img.shields.io/github/release/xiemj/sam-auto-annotator.svg)](https://github.com/xiemj/sam-auto-annotator/releases)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
+[![GitHub stars](https://img.shields.io/github/stars/xiemj/sam-auto-annotator.svg)](https://github.com/xiemj/sam-auto-annotator/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/xiemj/sam-auto-annotator.svg)](https://github.com/xiemj/sam-auto-annotator/network)
+[![GitHub issues](https://img.shields.io/github/issues/xiemj/sam-auto-annotator.svg)](https://github.com/xiemj/sam-auto-annotator/issues)
 
 基于SAM (Segment Anything Model) 的自动标注工具，提供完整的图像分割、抠图、缩放、合成和COCO格式转换流程。
 
